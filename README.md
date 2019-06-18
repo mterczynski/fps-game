@@ -1,4 +1,4 @@
-# TypeScript + Webpack + Three.js template
+# Fps game
 
 ## Install dependencies
 
