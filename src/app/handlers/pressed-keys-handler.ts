@@ -1,4 +1,4 @@
-export class KeyHandler {
+export class PressedKeysHandler {
 
   private pressedKeys: {[key: string]: boolean} = {};
 

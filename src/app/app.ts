@@ -4,8 +4,7 @@ import { Floor } from './floor';
 import { Player } from './player';
 
 import { OrbitControls } from 'three-orbitcontrols-ts';
-import { KeyHandler } from './key-handler';
-import { MouseMoveHandler } from './mouse-move-handler';
+import { MouseMoveHandler, PointerLockHandler, PressedKeysHandler } from './handlers';
 
 const canvas = document.getElementById('main-canvas') as HTMLCanvasElement;
 
@@ -21,8 +20,9 @@ export class App {
 
   // private readonly controls = new OrbitControls(this.camera, this.renderer.domElement);
 
-  private readonly keyHandler = new KeyHandler();
+  private readonly pressedKeysHandler = new PressedKeysHandler();
   private readonly mouseMoveHandler = new MouseMoveHandler();
+  private readonly pointerLockHandler = new PointerLockHandler();
 
   private floor: Floor = new Floor();
   private player: Player = new Player(this.camera);
@@ -32,10 +32,10 @@ export class App {
     this.scene.add(this.floor);
     this.scene.add(this.player);
 
-    canvas.requestPointerLock();
-
-    this.keyHandler.init();
+    this.pressedKeysHandler.init();
     this.mouseMoveHandler.init(this.player);
+    this.pointerLockHandler.init(canvas);
+
     this.light.position.set(0, 50, 0);
 
     this.player.position.set(-45, 5, -95);
@@ -50,7 +50,7 @@ export class App {
   }
 
   private handlePlayerMovements(delta: number) {
-    const pressedKeys = this.keyHandler.getPressedKeys();
+    const pressedKeys = this.pressedKeysHandler.getPressedKeys();
     const playerSpeed = 40 * delta / 1000;
 
     if (pressedKeys.a) {
