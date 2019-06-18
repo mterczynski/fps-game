@@ -21,11 +21,22 @@
       height: 100%;
       width: 100%;
     }
+
+    .crosshair {
+      width: 40px;
+      height: 40px;
+      z-index: 2;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
   </style>
 </head>
 
 <body>
   <canvas id="main-canvas"></canvas>
+  <img class="crosshair" alt="" src="./assets/crosshair.png">
   <script src="dist/bundle.js"></script>
 </body>
 

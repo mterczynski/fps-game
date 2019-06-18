@@ -3,11 +3,6 @@ import { BoxGeometry, Color, FrontSide, Mesh, MeshBasicMaterial, PerspectiveCame
 export class Player extends Mesh {
   constructor(camera: PerspectiveCamera) {
     super();
-    this.geometry = new BoxGeometry(10, 10, 10);
-    this.material = new MeshBasicMaterial({
-      color: new Color('rgb(255, 0, 0)'),
-      side: FrontSide,
-    });
     this.visible = false;
     this.add(camera);
 
@@ -29,9 +24,5 @@ export class Player extends Mesh {
 
   public moveBack(distance: number) {
     this.translateZ(distance);
-  }
-
-  public rotate(degrees: number) {
-    this.rotateY(degrees);
   }
 }
