@@ -1,4 +1,4 @@
-import { BackSide, BoxGeometry, Color, FrontSide, Mesh, MeshBasicMaterial, PerspectiveCamera, Vector3 } from 'three';
+import { BoxGeometry, Color, FrontSide, Mesh, MeshBasicMaterial, PerspectiveCamera, Vector3 } from 'three';
 
 export class Player extends Mesh {
   constructor(camera: PerspectiveCamera) {
