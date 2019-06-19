@@ -11,7 +11,10 @@ export class Player extends Mesh {
   }
 
   public moveForward(distance: number) {
+    const rotationX = this.rotation.x;
+    this.rotateX(-rotationX);
     this.translateZ(-distance);
+    this.rotateX(rotationX);
   }
 
   public moveLeft(distance: number) {
@@ -23,6 +26,9 @@ export class Player extends Mesh {
   }
 
   public moveBack(distance: number) {
+    const rotationX = this.rotation.x;
+    this.rotateX(-rotationX);
     this.translateZ(distance);
+    this.rotateX(rotationX);
   }
 }
