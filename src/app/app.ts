@@ -1,4 +1,4 @@
-import { AxesHelper, Color, PerspectiveCamera, PointLight, Scene, Vector3, WebGLRenderer } from 'three';
+import { AxesHelper, BoxGeometry, Color, Mesh, MeshBasicMaterial, PerspectiveCamera, PointLight, Scene, Vector3, WebGLRenderer } from 'three';
 import { Brick } from './brick';
 import { Floor } from './floor';
 import { Player } from './player';
@@ -16,7 +16,7 @@ export class App {
     canvas,
   });
 
-  private light = new PointLight(new Color('rgb(0, 0, 0)'), 1, 100);
+  private light = new PointLight(new Color('rgb(255, 255, 255)'), 1);
 
   // private readonly controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -36,12 +36,11 @@ export class App {
     this.mouseMoveHandler.init(this.player);
     this.pointerLockHandler.init(canvas);
 
-    this.light.position.set(0, 50, 0);
+    this.light.position.set(0, 500, 0);
+
+    this.scene.add(this.light);
 
     this.player.position.set(-45, 5, -95);
-
-    // this.camera.position.set(200, 200, 200);
-    // this.camera.lookAt(new Vector3(0, 0, 0));
 
     this.renderer.setSize(innerWidth, innerHeight);
     this.renderer.setClearColor(new Color('rgb(0,0,0)'));

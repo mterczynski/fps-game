@@ -7,5 +7,9 @@ export class PointerLockHandler {
     window.addEventListener('load', (e) => {
       canvas.requestPointerLock();
     });
+
+    window.addEventListener('click', (e) => {
+      canvas.requestPointerLock();
+    });
   }
 }
