@@ -1,16 +1,28 @@
-import { AxesHelper, BoxGeometry, Color, Mesh, MeshBasicMaterial, PerspectiveCamera, PointLight, Scene, Vector3, WebGLRenderer } from 'three';
-import { Brick } from './brick';
+import {
+  Color,
+  PerspectiveCamera,
+  PointLight,
+  Scene,
+  WebGLRenderer,
+} from 'three';
 import { Floor } from './floor';
+import {
+  MouseMoveHandler,
+  PointerLockHandler,
+  PressedKeysHandler,
+} from './handlers';
 import { Player } from './player';
-
-import { OrbitControls } from 'three-orbitcontrols-ts';
-import { MouseMoveHandler, PointerLockHandler, PressedKeysHandler } from './handlers';
 
 const canvas = document.getElementById('main-canvas') as HTMLCanvasElement;
 
 export class App {
   private readonly scene = new Scene();
-  private readonly camera = new PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 10000);
+  private readonly camera = new PerspectiveCamera(
+    45,
+    innerWidth / innerHeight,
+    0.1,
+    10000,
+  );
   private readonly renderer = new WebGLRenderer({
     antialias: true,
     canvas,
@@ -50,7 +62,7 @@ export class App {
 
   private handlePlayerMovements(delta: number) {
     const pressedKeys = this.pressedKeysHandler.getPressedKeys();
-    const playerSpeed = 40 * delta / 1000;
+    const playerSpeed = (40 * delta) / 1000;
 
     if (pressedKeys.a) {
       this.player.moveLeft(playerSpeed);
